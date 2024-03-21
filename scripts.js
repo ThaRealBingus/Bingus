@@ -7,8 +7,7 @@ const firebaseConfig = {
     storageBucket: "real-bingus-site.appspot.com",
     messagingSenderId: "972564015722",
     appId: "1:972564015722:web:1b95338bc11637d061f813",
-    measurementId: "G-6BZ5DRLVBD"
-  };
+};
     firebase.initializeApp(firebaseConfig);
 
     var db = firebase.firestore();
