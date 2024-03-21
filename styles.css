@@ -1,0 +1,47 @@
+body {
+    margin: 0;
+    padding: 0;
+    text-align: center; /* Center align all text */
+
+}
+
+
+
+.container {
+    padding: 20px;
+}
+
+.page {
+    display: none;
+    text-align: left; /* Align page content to the left */
+    margin: 0 auto; /* Center the page content */
+    max-width: 800px; /* Limit the width of page content */
+    background-color: rgba(255, 255, 255, 0.8); /* Page background color with transparency */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.active {
+    display: block;
+}
+
+
+
+/* Styles for the plus button container */
+.plus-button-container {
+    text-align: center;
+    margin-top: 20px; /* Adjust the margin as needed */
+}
+
+.plus-button-container a {
+    display: inline-block;
+    color: #fff;
+    background-color: rgba(51, 51, 51, 0.7);
+    padding: 14px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.plus-button-container a:hover {
+    background-color: #333;
+}
