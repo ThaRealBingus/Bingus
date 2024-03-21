@@ -1,4 +1,18 @@
 document.addEventListener("DOMContentLoaded", function() {
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+    apiKey: "AIzaSyAFr9w3uXRQTrupvYlv6aYIU2Cv0eiTsPA",
+    authDomain: "real-bingus-site.firebaseapp.com",
+    projectId: "real-bingus-site",
+    storageBucket: "real-bingus-site.appspot.com",
+    messagingSenderId: "972564015722",
+    appId: "1:972564015722:web:1b95338bc11637d061f813",
+    measurementId: "G-6BZ5DRLVBD"
+  };
+    firebase.initializeApp(firebaseConfig);
+
+    var db = firebase.firestore();
+
     document.getElementById("addPage").addEventListener("click", function() {
         var pageCount = document.querySelectorAll('.page').length + 1;
 
@@ -16,6 +30,9 @@ document.addEventListener("DOMContentLoaded", function() {
         newPageDiv.classList.add("page");
         newPageDiv.innerHTML = "<h2>Page " + pageCount + "</h2><p>This is page " + pageCount + "</p>";
         document.querySelector('.container').appendChild(newPageDiv);
+
+        // Save the created page to Firestore
+        savePageToFirestore(pageCount);
     });
 
     document.getElementById("homePage").addEventListener("click", function(e) {
@@ -31,6 +48,22 @@ document.addEventListener("DOMContentLoaded", function() {
         if (pages.length >= pageNumber) {
             pages[pageNumber - 1].style.display = 'block'; // Show the requested page
         }
+    }
+
+    function savePageToFirestore(pageNumber) {
+        var pageTitle = "Page " + pageNumber;
+        var pageContent = ""; // You can get the content from Quill editor if needed
+
+        db.collection("pages").add({
+            title: pageTitle,
+            content: pageContent
+        })
+        .then(function(docRef) {
+            console.log("Page created with ID: ", docRef.id);
+        })
+        .catch(function(error) {
+            console.error("Error adding page: ", error);
+        });
     }
 
     // Initialize the Quill editor
